@@ -4,7 +4,10 @@
 
 # Envoy Proxy on Clearlinux
 
-You need at least to map volume `/config` with `envoy.yml` file inside.  
+You need at least to map volume `/config` with `envoy.yaml` file inside.  
+
+**Important!** Extension of the config file must be `.yaml`! - Envoy won't work with `.yml` file.
+                      
 
 ## License
 
