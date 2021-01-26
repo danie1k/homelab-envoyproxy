@@ -18,7 +18,7 @@ RUN source /os-release \
 # Create Envoy shortcut command
  && { \
       echo '#!/bin/sh'; \
-      echo "getenvoy --home-dir /root/.getenvoy run standard:${envoy_version} -- \"$@\""; \
+      echo "getenvoy --home-dir /root/.getenvoy run standard:${envoy_version} -- \"\$@\""; \
     } > /install_root/usr/local/bin/envoy \
  && chmod +x /install_root/usr/local/bin/envoy
 
