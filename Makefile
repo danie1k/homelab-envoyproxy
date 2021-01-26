@@ -1,6 +1,11 @@
+NAME = homelab-envoyproxy
 
-yamllint:
-	@yamllint --version
-	@yamllint --strict .
+build:
+	@docker build -t $(NAME) .
 
-lint-all: yamllint
+build-nocache:
+	@docker build -t $(NAME) --no-cache .
+
+run:
+	@docker rm -f $(NAME) || true
+	@docker run --rm --name $(NAME) $(NAME)
