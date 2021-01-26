@@ -14,12 +14,11 @@ RUN source /os-release \
     --no-boot-update \
 # Install Getenvoy & Envoy
  && curl -L https://getenvoy.io/cli | bash -s -- -b /install_root/usr/local/bin \
- && /install_root/usr/local/bin/getenvoy --home-dir /install_root/root/.getenvoy run "standard:${envoy_version}" -- --version
-
+ && /install_root/usr/local/bin/getenvoy --home-dir /install_root/root/.getenvoy run "standard:${envoy_version}" -- --version \
 # Create Envoy shortcut command
-RUN { \
+ && { \
       echo '#!/bin/sh'; \
-      echo 'getenvoy --home-dir /root/.getenvoy run "standard:${envoy_version}" -- "$@"'; \
+      echo "getenvoy --home-dir /root/.getenvoy run standard:${envoy_version} -- \"$@\""; \
     } > /install_root/usr/local/bin/envoy \
  && chmod +x /install_root/usr/local/bin/envoy
 
